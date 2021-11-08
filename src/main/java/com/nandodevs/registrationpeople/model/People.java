@@ -1,5 +1,9 @@
 package com.nandodevs.registrationpeople.model;
 
+import com.nandodevs.registrationpeople.enums.Estados;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
@@ -14,11 +18,26 @@ public class People {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(max = 60)
     private String name;
+
+    @NotBlank
+    @Size(max = 11)
     private String cpf;
+
+    @NotBlank
+    @Size(max = 255)
+    @Email
     private String email;
+
+    @NotBlank
     private String city;
-    private Enum Estados;
+
+    private Estados estados;
+
+    @NotBlank
+    @Size(max = 20)
     private String telefone;
 
 }
